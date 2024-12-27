@@ -353,8 +353,8 @@ transition:0.32s cubic-bezier(0.6,0,0.7,0.2);
 
 .about .img-about {
     position: relative;
-    width: 380px;
-    height: 380px;
+    width: 350px;
+    height: 350px;
     border-radius: 50%;
     overflow: hidden;
     margin: auto;
