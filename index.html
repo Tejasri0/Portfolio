@@ -346,20 +346,47 @@
 <!-- Contact section -->
         <section id="contact" class="contact">
             <div class="main-text scroll-scale">
-                <span>ask me question</span>
+                <span>Ask me a question</span>
                 <h2>Contact Me!</h2>
             </div>
-            <form action="https://wa.me/+918712149004" class="scroll-bottom">
-                <input type="text" placeholder="Your Name">
-                <input type="text" placeholder="Your Email">
-                <input type="text" placeholder="Your Address">
-                <input type="number" placeholder="Phone Number">
-                <textarea name="" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
+            <form id="contactForm" class="scroll-bottom">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="email" id="email" placeholder="Your Email" required>
+                <input type="text" id="address" placeholder="Your Address" required>
+                <input type="tel" id="phone" placeholder="Phone Number" required>
+                <textarea id="message" cols="30" rows="10" placeholder="Your Message" required></textarea>
                 <div class="btn-box formBtn">
-                    <button type="submit" class="btn">Send Message</button>
+                    <button type="button" class="btn" id="sendMessageBtn">Send Message</button>
                 </div>
             </form>
         </section>
+
+        <script>
+            document.getElementById("sendMessageBtn").addEventListener("click", function () {
+                const name = document.getElementById("name").value.trim();
+                const email = document.getElementById("email").value.trim();
+                const address = document.getElementById("address").value.trim();
+                const phone = document.getElementById("phone").value.trim();
+                const message = document.getElementById("message").value.trim();
+                if (!name || !email || !address || !phone || !message) {
+                    alert("Please fill in all the fields.");
+                    return;
+                }
+                const whatsappNumber = "918712149004";
+                const whatsappMessage = `
+                    New Contact Form Submission:
+                    Name: ${name}
+                    Email: ${email}
+                    Address: ${address}
+                    Phone: ${phone}
+                    Message: ${message}
+                `;
+                const encodedMessage = encodeURIComponent(whatsappMessage.trim());
+                const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+                window.open(whatsappURL, "_blank");
+                document.getElementById("contactForm").reset();
+            });
+        </script>
 
 <!-- Footer website -->
         <footer>
